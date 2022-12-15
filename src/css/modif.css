@@ -1,0 +1,33 @@
+.add-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+}
+.input-group {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-sub {
+    display: flex;
+    justify-content: center;
+}
+.header h1 {
+    text-align: center;
+}
+button {
+    width: 10rem;
+    height: 2rem;
+    background-color: white;
+    border-color:  rgb(139, 139, 255);
+    border: 1px solid;
+    transition: .2s;
+}
+button:hover {
+    color: white;
+    border-color: white;
+    background-color: rgb(139, 139, 255);
+    cursor: pointer;
+}
