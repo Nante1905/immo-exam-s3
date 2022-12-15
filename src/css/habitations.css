@@ -1,0 +1,59 @@
+.sary img {
+    width: 275px;
+    height: 250px;
+}
+.quartier {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.hab-card a > div {
+    margin-block: .5rem;
+}
+.hab-card a {
+    color: black;
+    text-decoration: none;
+}
+.hab-card {
+    padding: 1rem;
+    border: 1px solid;
+    margin: 2rem;
+    border-radius: 15px;
+}
+.hab-list-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid;
+    padding: 1rem;
+    margin-inline: 20rem;
+}
+.nav-item:hover {
+    cursor: pointer;
+}
+.search-form {
+    margin-block: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-form input:focus-visible {
+    outline: none;
+}
+.search-form button {
+    width: 10rem;
+    height: 1.5rem;
+    background-color: white;
+    border-color:  rgb(139, 139, 255);
+    border: 1px solid;
+    transition: .2s;
+}
+.search-form button:hover {
+    color: white;
+    border-color: white;
+    background-color: rgb(139, 139, 255);
+    cursor: pointer;
+}
