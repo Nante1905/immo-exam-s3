@@ -35,7 +35,7 @@
         $connection->exec("delete from habitations where id=$idHab");
     }
     function getMontantLoyerParJour($mois,$annee){
-        $connection = setConnection();
+        $connection = setPostgresConnection();
         $req = $connection->query(/*requete*/);
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
