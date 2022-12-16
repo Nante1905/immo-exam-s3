@@ -3,7 +3,7 @@
     $descri = $_GET['descri'];
     $recherche = rechercheDescri($descri);
     $response = array(
-        "req" => $recherche
+        "recherche" => $recherche
     );
     echo json_encode($response);
 ?>

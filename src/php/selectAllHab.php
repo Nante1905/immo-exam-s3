@@ -2,7 +2,7 @@
     require_once("functionHabitation.php");
     $allHab = getAllHab();
     $response = array(
-        "req" => $allHab
+        "allHab" => $allHab
     );
     echo json_encode($response);
 ?>
