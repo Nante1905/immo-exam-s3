@@ -61,6 +61,13 @@
         $res = $req->fetchAll();
         return res;
     }
+    function getImageById($id){
+        $connection = setConnection();
+        $req = $connection->query("select namefile from photo where id='$id'");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        return res;
+    }
     
     // function getMontantLoyerParJour($mois,$annee){
     //     $connection = setPostgresConnection();

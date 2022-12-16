@@ -16,7 +16,7 @@ window.addEventListener("load", function(){
         }
 
         var formData; 
-        xhr.addEventListener("load", function(event){
+        xhr.addEventListener('load', function(event){
             formData = new FormData(form);
             let res = xhr.responseText
             let data = JSON.parse(res)
@@ -27,11 +27,9 @@ window.addEventListener("load", function(){
                 displayRes.innerHTML = 'Erreur de email ou mot de passe';
                 displayRes.style.color = 'red';
             }
-            // $msg = (event.target.responseText!="")?event.target.responseText:"OK";
-            // alert($msg);
         });
 
-        xhr.addEventListener("error",function(event){
+        xhr.addEventListener('error',function(event){
             alert("erreur");
         });
 
@@ -40,10 +38,10 @@ window.addEventListener("load", function(){
         xhr.send(formData);
     }
 
-    var form; 
+    var form = document.getElementById('login'); 
 
-    form.addEventListener("submit", function(event){
-        form =  document.getElementById("login");
+    form.addEventListener('submit', function(event){
+        // form =  document.getElemen:tById('login');
         event.preventDefault();
         sendData();
 
