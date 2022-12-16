@@ -2,8 +2,18 @@
     require_once("connection.php");
     function getAllHab()
     {
-        $connection = setConnection();
-        $req = $connection->query("select * from habitations");
+        $connection = setPostgresConnection();
+        $req = $connection->query("select * from habitations join photo on habitations.idhabitations=photo.idhabitations join types on habitations.types=types.idtypes where photo.categorie='main'");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        
+        return $res;
+        // return $res;
+    }
+    function getAllHabByTypes($idtype) 
+    {
+        $connection = setPostgresConnection();
+        $req = $connection->query("select * from habitations join photo on habitations.idhabitations=photo.idhabitations join types on habitations.types=types.idtypes where photo.categorie='main' and habitations.types = $idtype");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         
@@ -12,14 +22,14 @@
     }
     function getIdHab(){
         $connection = setPostgresConnection();
-        $req = $connection->query("select max(idhabitations) from habitations");
+        $req = $connection->query("select max(idhabitations) as idhab from habitations");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         return $res;
     }
     function getIdType($nomType){
-        $connection = setConnection();
-        $connection->query("select idtypes from types where nomtype=$nomType");
+        $connection = setPostgresConnection();
+        $req = $connection->query("select idtypes from types where nomtype='$nomType'");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         return $res;
@@ -27,39 +37,40 @@
     function addPhoto($photo){
         $connection = setPostgresConnection();
         $maxIdHab = getIdHab();
-        $res = $connection->exec("insert into photo values (DEFAULT,$maxIdHab,$photo)");
+        $maxIdHab = $maxIdHab[0]->idhab;
+        $res = $connection->exec("insert into photo values (DEFAULT,$maxIdHab,'$photo')");
         return $res;
     }
     function addHab($type,$nbreChambre,$loyer,$quartier,$descri){
-        $connection = setConnection();
-        $idType = getIdType($type);
-        $connection->exec("insert into habitation VALUES DEFAULT,$idType,$nbreChambre,$loyer,$quartier,$descri");
+        $connection = setPostgresConnection();
+        $idtype = getIdType($type);
+        $idtype = $idtype[0]->idtypes;
+        $res = $connection->exec("insert into habitations VALUES (DEFAULT,$idtype,$nbreChambre,$loyer,'$quartier','$descri')");
+        return $res;
     }
     function updateHab($idHab,$type,$nbreChambre,$loyer,$quartier,$descri){
         $connection = setPostgresConnection();
-        $connection->exec("update habitations set Types=$type,nombreDeChambre=$nbreChambre,LoyerJr=$loyer,Quartier=$quartier,descri=$descri where id=$idHab");
+        $idtype = getIdType($type);
+        $idtype = $idtype[0]->idtypes;
+        $connection->exec("update habitations set Types=$idtype,nombreDeChambre=$nbreChambre,loyer=$loyer,quartier='$quartier',descri='$descri' where idhabitations=$idHab");
     }
     function deleteHab($idHab){
-        $connection = setConnection();
-        $connection->exec("delete from habitations where id=$idHab");
-    }
-    function getMontantLoyerParJour($mois,$annee){
         $connection = setPostgresConnection();
-        $connection->exec("delete from habitations where id=$idHab");
+        $connection->exec("delete from habitations where idhabitations=$idHab");
     }
     function rechercheDescri($descri){
-        $connection = setConnection();
-        $connection->query("select * from habitations where descri='$descri'");
+        $connection = setPostgresConnection();
+        $req = $connection->query("select * from habitations join photo on habitations.idhabitations=photo.idhabitations join types on habitations.types=types.idtypes where photo.categorie='main' and descri like '%$descri%'");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         return $res;
     }
     function getDisponibilite($day,$month,$year){
-        $connection = setConnection();
-        $connection->query("select * from habitations where id not in (select idHab from reservation where extract(day from datereservation)='$day' and extract(month from datereservation)='$month' and extract(year from datereservation)='$year')");
+        $connection = setPostgresConnection();
+        $req = $connection->query("select * from habitations where id not in (select idHab from reservation where extract(day from datereservation)='$day' and extract(month from datereservation)='$month' and extract(year from datereservation)='$year')");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
-        return res;
+        return $res;
     }
     function getImageById($id){
         $connection = setConnection();

@@ -1,5 +1,5 @@
 <?php
-require_once('./connection.php');
+require_once('connection.php');
 
 function getHabitationById($id) {
     $pdo = setPostgresConnection();
@@ -40,4 +40,13 @@ function inscription($email, $nom, $mdp, $tel) {
     $res = $pdo->exec($query);
 
     return $res;
+}
+function getTypeById($id) {
+    $pdo = setPostgresConnection();
+    $query = "select * from types where idtypes=$id";
+    $res = $pdo->query($query);
+    $res->setFetchMode(PDO::FETCH_OBJ);
+    $data = $res->fetchAll();
+
+    return $data[0]->nomtype;
 }

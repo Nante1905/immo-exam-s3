@@ -1,6 +1,6 @@
 <?php
     require_once("functionHabitation.php");
-    $descri = $_GET['descri'];
+    $descri = $_POST['descri'];
     $recherche = rechercheDescri($descri);
     $response = array(
         "recherche" => $recherche

@@ -14,7 +14,7 @@
     </div>
     <div class="content">
       <div class="add-component">
-        <form action="#" method="get" id="add-form">
+        <form action="./../php/addHab-back.php" method="get" id="add-form">
           <div class="add-form">
             <div class="input-group">
               <label for="type">Type : </label>
@@ -29,7 +29,7 @@
               <input type="text" name="loyer" />
             </div>
             <div class="input-group">
-              <label for="photos">Photos : </label>
+              <label for="file[]">Photos : </label>
               <input type="file" name="file[]" multiple />
             </div>
             <div class="input-group">
@@ -41,14 +41,14 @@
               <input type="text" name="descri" />
             </div>
             <div class="btn-sub">
-              <button>Ajouter</button>
+              <button type="submit">Ajouter</button>
             </div>
           </div>
         </form>
-        <div class="response" style="text-align: center;"></div>
+        <!-- <div class="response" style="text-align: center;"></div> -->
       </div>
       <div class="list-component"></div>
     </div>
-    <script src="./../js/add.js"></script>
+    <!-- <script src="./../js/add.js"></script> -->
   </body>
 </html>
