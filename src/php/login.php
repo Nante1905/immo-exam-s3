@@ -1,7 +1,6 @@
 <?php
 require_once("./functions.php");
-
-if(!isset($_POST["email"], $_POST["mdp"])) {
+if(!isset($_POST["email"]) || !isset($_POST["mdp"])) {
     $res = array(
         "logres" => "not logged"
     );

@@ -124,7 +124,7 @@ window.addEventListener('load', () => {
         })
     })
 
-    const btns = document.querySelectorAll('.nav-item')
+    const btns = document.querySelectorAll('.filter')
     for(let i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', () => handleClick(i))
     }

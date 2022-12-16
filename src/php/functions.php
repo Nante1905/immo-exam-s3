@@ -23,12 +23,14 @@ function setReservation($idhabitations, $idusers, $datedebut, $datefin) {
 }
 function login($email, $mdp) {
     $pdo = setPostgresConnection();
-    $query = "select count(*) isany from users where email='$email' and mdp='$mdp'";
+    $query = "select count(*) isany, idusers from users where email='$email' and mdp='$mdp' group by idusers";
     $res = $pdo->query($query);
     $res->setFetchMode(PDO::FETCH_OBJ);
     $data = $res->fetchAll();
 
     if($data[0]->isany === 1) {
+        session_start();
+        $_SESSION["usersession"] = $data[0]->idusers;
         return true;
     }
     return false;
