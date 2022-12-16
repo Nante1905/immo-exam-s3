@@ -99,9 +99,6 @@ INSERT INTO HABITATIONS VALUES(
 );
 
 INSERT INTO HABITATIONS VALUES(
-    DEFAULT,
-    2,
-    1,
     250.00,
     3,
     'Studio de musique ,enregistrement et repetition avec style'
