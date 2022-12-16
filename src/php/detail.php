@@ -17,28 +17,30 @@
     <div id="contenant-Image">
 
     <?php
-    require_once("functionHabitaion.php");   
-    $id=$_POST['id'];
+    require_once("functionHabitation.php");   
+    // $id=$_POST['id'];
+    $id = 1;
 
-    try {
-        function setPostGresConnection(){
-            $user='postgres';
-            $pass='noob';
-            $dsn='pgsql:host=locahost;port=5432;dbname=Immobilier';
-            $pdo=new PDO($dsn,$user,$pass);
-            return $pdo;
-        }
-        $connexion=setPostGresConnection();
-    } catch (\Throwable $th) {
-        throw $th;
-    }
+    // try {
+    //     function setConnection(){
+    //         $user='postgres';
+    //         $pass='noob';
+    //         $dsn='pgsql:host=locahost;port=5432;dbname=Immobilier';
+    //         $pdo=new PDO($dsn,$user,$pass);
+    //         return $pdo;
+    //     }
+    //     $connexion=setConnection();
+    // } catch (\Throwable $th) {
+    //     throw $th;
+    // }
 
     function getHabbyId($id,$connexion){
     $result=$connexion->query('select * from habitations where id='.$id.'');
     $resultat=$result->fetch(PDO::FETCH_OBJECT);
     return $resultat;
     }
-    $hab=getHabbyId($id,$connexion);
+    // $hab=getHabbyId($id,$connexion);
+    $hab = getAllHab();
     $photos = getImageById($id);
     for($i=0;$i<count($photos);$i++){ ?>
     <div><img src="<?= $photos[$i]; ?>" alt="" height="180" width="300"></div>
