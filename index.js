@@ -15,6 +15,9 @@ window.addEventListener('load', () => {
             if(data.logres === 'logged') {
                 window.location.href = './src/pages/habitations.html'
             }
+            else if(data.logres === 'logged as admin') {
+                window.location.href = './src/pages/admin.php'
+            }
             else {
                 const diverror = document.querySelector('.error')
                 diverror.innerHTML = 'Email ou mdp invalide'

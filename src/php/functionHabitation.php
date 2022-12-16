@@ -20,6 +20,16 @@
         return $res;
         // return $res;
     }
+    function getAllHabById($id) 
+    {
+        $connection = setPostgresConnection();
+        $req = $connection->query("select * from habitations join photo on habitations.idhabitations=photo.idhabitations join types on habitations.types=types.idtypes where habitations.idhabitations = $id");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        
+        return $res;
+        // return $res;
+    }
     function getIdHab(){
         $connection = setPostgresConnection();
         $req = $connection->query("select max(idhabitations) as idhab from habitations");
