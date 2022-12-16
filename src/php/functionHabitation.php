@@ -47,6 +47,13 @@
         $connection = setPostgresConnection();
         $connection->exec("delete from habitations where id=$idHab");
     }
+    function rechercheDescri($descri){
+        $connection = setConnection();
+        $connection->query("select * from habitations where descri='$descri'");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        return $res;
+    }
     // function getMontantLoyerParJour($mois,$annee){
     //     $connection = setPostgresConnection();
     //     $req = $connection->query(/*requete*/);

@@ -1,9 +1,8 @@
 <?php
     require_once("functionHabitation.php");
-    $descri = $_GET['descri'];
-    $recherche = rechercheDescri($descri);
+    $allHab = getAllHab();
     $response = array(
-        "req" => $recherche
+        "req" => $allHab
     );
     echo json_encode($response);
 ?>
