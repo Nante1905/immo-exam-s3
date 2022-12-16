@@ -48,6 +48,21 @@
         $connection = setPostgresConnection();
         $connection->exec("delete from habitations where idhabitations=$idHab");
     }
+    function rechercheDescri($descri){
+        $connection = setPostgresConnection();
+        $req = $connection->query("select * from habitations where descri='$descri'");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        return $res;
+    }
+    function getDisponibilite($day,$month,$year){
+        $connection = setPostgresConnection();
+        $req = $connection->query("select * from habitations where id not in (select idHab from reservation where extract(day from datereservation)='$day' and extract(month from datereservation)='$month' and extract(year from datereservation)='$year')");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        return $res;
+    }
+    
     // function getMontantLoyerParJour($mois,$annee){
     //     $connection = setPostgresConnection();
     //     $req = $connection->query(/*requete*/);

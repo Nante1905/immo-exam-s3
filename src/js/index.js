@@ -18,9 +18,17 @@ window.addEventListener("load", function(){
         var formData; 
         xhr.addEventListener("load", function(event){
             formData = new FormData(form);
-            $msg = (event.target.responseText!="")?event.target.responseText:"OK";
-            window.location.href("lien.html");
-            alert($msg);
+            let res = xhr.responseText
+            let data = JSON.parse(res)
+            if(data.logres === 'logged') {
+                window.location.href("../pages/add.html");
+            }
+            else{
+                displayRes.innerHTML = 'Erreur de email ou mot de passe';
+                displayRes.style.color = 'red';
+            }
+            // $msg = (event.target.responseText!="")?event.target.responseText:"OK";
+            // alert($msg);
         });
 
         xhr.addEventListener("error",function(event){
