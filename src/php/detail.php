@@ -1,8 +1,8 @@
 <?php
-// $id=$_POST['idHab'];
+ //$id=$_POST['id'];
 require("functionHabitation.php");
 require("functions.php");
-;$id = 1;
+;$id = 6;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +41,8 @@ require("functions.php");
 
             <p> Fin de votre séjour: <br> <input type="date" name="dateFin" id="dateFin"></p>
         </form>
-
-        <a href="reservation-back.php?id=".$id>Reserver</a>
+        
+       <a href="reservation-back.php?id=".$id>Reserver</a>
     </div>
 </div>
 
