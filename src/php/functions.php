@@ -12,13 +12,25 @@ function getHabitationById($id) {
     return $data;
 }
 function setReservation($idhabitations, $idusers, $datedebut, $datefin) {
+    $pdo = setPostgresConnection();
     $date1 = date_create($datedebut);
+    // var_dump($date1);
     $date2 = date_create($datefin);
     $diff = date_diff($date1, $date2, true);
     $interval = $diff->days;
 
-    for($i = 0; $i<$interval; $i++) {
-        $query = "insert into reservation values(DEFAULT, $idusers, $idhabitations, $datedebut::date + '$i days'::interval)";
+    $req = $pdo->query("select count(*) isany from reservation where datereservation>='$datedebut'::date and datereservation<='$datefin'::date and idhab=$idhabitations");
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $res = $req->fetchAll();
+
+    if($res[0]->isany >= 1) {
+        return false;
+    }
+    else {
+        for($i = 0; $i<$interval; $i++) {
+            $query = "insert into reservation values(DEFAULT, $idusers, $idhabitations, '$datedebut'::date + '$i days'::interval)";
+        }
+        return true;
     }
 }
 function login($email, $mdp) {
