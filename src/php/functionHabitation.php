@@ -3,7 +3,17 @@
     function getAllHab()
     {
         $connection = setPostgresConnection();
-        $req = $connection->query("select * from habitations");
+        $req = $connection->query("select * from habitations join photo on habitations.idhabitations=photo.idhabitations join types on habitations.types=types.idtypes where photo.categorie='main'");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        
+        return $res;
+        // return $res;
+    }
+    function getAllHabByTypes($idtype) 
+    {
+        $connection = setPostgresConnection();
+        $req = $connection->query("select * from habitations join photo on habitations.idhabitations=photo.idhabitations join types on habitations.types=types.idtypes where photo.categorie='main' and habitations.types = $idtype");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         
@@ -50,7 +60,7 @@
     }
     function rechercheDescri($descri){
         $connection = setPostgresConnection();
-        $req = $connection->query("select * from habitations where descri='$descri'");
+        $req = $connection->query("select * from habitations join photo on habitations.idhabitations=photo.idhabitations join types on habitations.types=types.idtypes where photo.categorie='main' and descri like '%$descri%'");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         return $res;

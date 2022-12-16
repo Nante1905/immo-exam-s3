@@ -129,6 +129,7 @@ CREATE TABLE PHOTO (
     IDPHOTO SERIAL,
     IDHABITATIONS INT NOT NULL,
     NAMEFILE VARCHAR(30),
+    categorie VARCHAR(10),
     PRIMARY KEY (IDPHOTO),
     FOREIGN KEY (IDHABITATIONS) REFERENCES HABITATIONS(IDHABITATIONS)
 );
@@ -136,43 +137,50 @@ CREATE TABLE PHOTO (
 INSERT INTO PHOTO VALUES(
     DEFAULT,
     1,
-    'maison1e.jpg'
+    'maison1e.jpg',
+    'main'
 );
 
 INSERT INTO PHOTO VALUES(
     DEFAULT,
     2,
-    'maison2e.jpg'
+    'maison2e.jpg',
+    'main'
 );
 
 INSERT INTO PHOTO VALUES(
     DEFAULT,
     3,
-    'maison3e.jpg'
+    'maison3e.jpg',
+    'main'
 );
 
 INSERT INTO PHOTO VALUES(
     DEFAULT,
     7,
-    'appart1e.jpg'
+    'appart1e.jpg',
+    'main'
 );
 
 INSERT INTO PHOTO VALUES(
     DEFAULT,
     8,
-    'appart2e.jpg'
+    'appart2e.jpg',
+    'main'
 );
 
 INSERT INTO PHOTO VALUES(
     DEFAULT,
     4,
-    'studio1e.jpg'
+    'studio1e.jpg',
+    'main'
 );
 
 INSERT INTO PHOTO VALUES(
     DEFAULT,
     5,
-    'studio2i.jpg'
+    'studio2i.jpg',
+    'main'
 );
 
 INSERT INTO PHOTO VALUES(
@@ -280,7 +288,8 @@ INSERT INTO PHOTO VALUES(
 INSERT INTO PHOTO VALUES(
     DEFAULT,
     6,
-    'studio3i.jpg'
+    'studio3i.jpg',
+    'main'
 );
 
 INSERT INTO PHOTO VALUES(
