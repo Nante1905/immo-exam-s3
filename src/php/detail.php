@@ -23,8 +23,8 @@ require("functions.php");
     <?php   $hab=getAllHabById($id);
             for ($i=0; $i <count($hab) ; $i++) { 
         ?>
-        <div><img src="../../assets/img/<?=$hab[$i]->photo; ?>" alt="" height="180" width="300"></div> 
-        <?php echo '../../assets/img/<?$hab[$i]->photo'; }?>
+        <div><img src="../../assets/img/<?=$hab[$i]->namefile; ?>" alt="" height="180" width="300"></div> 
+        <?php  }?>
     </div>
 </div>
 
