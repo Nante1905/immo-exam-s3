@@ -1,4 +1,6 @@
-
+<?php
+$id=$_GET['idHab'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,16 +17,17 @@
 
 <div id="box1">
     <div id="contenant-Image">
-        <div><img src="appart1e.jpg" alt="" height="180" width="300"></div>
-        <div><img src="studio3i3.jpg" alt="" height="180" width="300"></div>
-        <div><img src="appart1i.jpg" alt="" height="180" width="300"></div>
-        <div><img src="appart1i2.jpg" alt="" height="180" width="300"></div>
+    <?php   $hab=getHabbyId($id);
+            for ($i=0; $i <count($hab->photo) ; $i++) { 
+        ?>
+        <div><img src="<?$hab->photo?>" alt="" height="180" width="300"></div> 
+        <?php }?>
     </div>
 </div>
 
 <div id="box2">
     <div id="prix-reserver">
-        <h3>200$ par nuit</h3>
+        <h3><?$hab->loyerjr?> par nuit</h3>
         <p>Réserver si vous êtes interressé</p>
         <p><input type="button" id="valid" value="Réserver"></p>
     </div>
@@ -35,9 +38,9 @@
 <div id="descri">
     <div id="box3">
     <h3>Point a voir</h3>
-    <p> Quartier: Bon lieu</p>
-    <p> Type: manoir</p>
-    <p> Un appartement tres spacieux et claire</p>
+    <p>Se trouvant dans le Quartier de <?$hab->quartier?></p>
+    <p> De type <?$hab->types?></p>
+    <p><?$hab->descri?></p>
     </div>
 </div>
 </div>
