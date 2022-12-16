@@ -18,7 +18,7 @@ function setReservation($idhabitations, $idusers, $datedebut, $datefin) {
     $interval = $diff->days;
 
     for($i = 0; $i<$interval; $i++) {
-        $query = "insert into reservation values(DEFAULT, $idusers, $idhabitations, $datedebut + '$i days'::interval)";
+        $query = "insert into reservation values(DEFAULT, $idusers, $idhabitations, $datedebut::date + '$i days'::interval)";
     }
 }
 function login($email, $mdp) {

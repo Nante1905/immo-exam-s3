@@ -1,43 +1,30 @@
-window.addEventListener("load", function(){
-    function sendData(){
-        var xhr;
-        try {
-            xhr = new ActiveXObject('Msxml2.XMLHTTP');
-        } catch (e) {
-            try {
-                xhr = new ActiveXObject('Microsoft.XMLHTTP');
-            } catch (e2) {
-                try {
-                    xhr = new XMLHttpRequest();
-                } catch (e3) {
-                    xhr = false;
-                }
+window.addEventListener("load", () => {
+    const handleClickInscri = () => {
+        let xhr = new XMLHttpRequest()
+        xhr.open('post', './../php/inscri-back.php', true)
+
+        let form = document.querySelector("#inscription")
+        let formdata = new FormData(form)
+
+        xhr.send(formdata)
+
+        xhr.addEventListener('load', () => {
+            let res = xhr.responseText
+            let data = JSON.parse(res)
+
+            if(data.inscri === 'yes') {
+                window.location.href = './../../index.html'
             }
-        }
-
-        var formData; 
-        xhr.addEventListener("load", function(event){
-            formData = new FormData(form);
-            $msg = (event.target.responseText!="")?event.target.responseText:"OK";
-            window.location.href("traitement-inscription.html");
-            alert($msg);
-        });
-
-        xhr.addEventListener("error",function(event){
-            alert("erreur");
-        });
-
-        xhr.open("POST","");
-
-        xhr.send(formData);
+            else {
+                const diverror = document.querySelector('.error')
+                diverror.innerHTML = 'Erreur du serveur'
+                diverror.style.color = 'red'
+            }
+        })
     }
-
-    var form;
-
-    form.addEventListener("submit", function(event){
-        form = document.getElementById("inscription");
-        event.preventDefault();
-        sendData();
-
-    });
+    const btn = document.querySelector('.signin')
+    btn.addEventListener('click', (event) => {
+        event.preventDefault()
+        handleClickInscri()
+    })
 })

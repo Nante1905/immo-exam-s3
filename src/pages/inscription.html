@@ -9,16 +9,17 @@
     <title>S'inscire sur notre site immobilier</title>
 </head>
 <body>
-    <script src="../js/inscription.js"></script>
     <h1>Inscrivez-vous</h1>
     <form action="" method="post" id="inscription">
         <div class="inscription">
-            <p>Votre email : <input type="email" name="emailInscription" id="emailInscription"></p> 
-            <p>Votre nom : <input type="text" name="nomUser" id="nomUser"></p> 
-            <p>Votre mot de passe : <input type="text" name="mdpInscription" id="mdpInscription"></p>
-            <p>Votre numéro telephone : <input type="text" name="numTel" id="numTel"></p>
-            <button><a href="">S'inscrire</a></button>
+            <p>Votre email : <input type="email" name="email" id="emailInscription"></p> 
+            <p>Votre nom : <input type="text" name="nom" id="nomUser"></p> 
+            <p>Votre mot de passe : <input type="password" name="mdp" id="mdpInscription"></p>
+            <p>Votre numéro telephone : <input type="text" name="tel" id="numTel"></p>
+            <button class="signin">S'inscrire</button>
         </div>
     </form>
+    <div class="error"></div>
+    <script src="../js/inscription.js"></script>
 </body>
 </html>
