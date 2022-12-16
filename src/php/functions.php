@@ -33,3 +33,11 @@ function login($email, $mdp) {
     }
     return false;
 }
+
+function inscription($email, $nom, $mdp, $tel) {
+    $pdo = setPostgresConnection();
+    $query = "insert into users values (DEFAULT, '$email', '$nom', '$mdp', '$tel')";
+    $res = $pdo->exec($query);
+
+    return $res;
+}
