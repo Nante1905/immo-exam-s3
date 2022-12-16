@@ -9,10 +9,53 @@
     <title>Login Immobilier</title>
 </head>
 <body>
+    <script type="text/javascript">
+        window.addEventListener("load", function(){
+            function sendData(){
+                var xhr;
+                try {
+                    xhr = new ActiveXObject('Msxml2.XMLHTTP');
+                } catch (e) {
+                    try {
+                        xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                    } catch (e2) {
+                        try {
+                            xhr = new XMLHttpRequest();
+                        } catch (e3) {
+                            xhr = false;
+                        }
+                    }
+                }
+
+                var formData = new FormaData(form);
+                xhr.addEventListener("load", function(event){
+                    $msg = (event.target.responseText!="")?event.target.responseText:"OK";
+                    window.location.href("lien.html");
+                    alert($msg);
+                });
+
+                xhr.addEventListener("error",function(event){
+                    alert("erreur");
+                });
+
+                xhr.open("POST","");
+
+                xhr.send(formData);
+            }
+
+            var form = document.getElementById("login");
+
+            form.addEventListener("submit", function(event){
+                event.preventDefault();
+                sendData();
+                
+            });
+        })
+    </script>
     <!-- <div class="image-presentation">
         <img src="assets/img/appart1i.jpg" width="500px" alt="">
     </div> -->
-    <form action="" method="post">
+    <form action="" method="post" id="login">
         <div class="formulaire">
             <p>Votre email : <input type="email" name="emailUser" id="emailUser"></p> 
             <p>Votre mot de passe : <input type="password" name="mdp" id="mdp"></p>

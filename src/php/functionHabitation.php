@@ -13,6 +13,7 @@
     function addHab($idHab,$type,$nbreChambre,$loyer,$photo,$quartier,$descri){
         $connection = setConnection();
         $connection->exec(/*requete*/);
+        $connection->exec(/*requete*/);
     }
     function updateHab($idHab,$type,$nbreChambre,$loyer,$photo,$quartier,$descri){
         $connection = setConnection();
@@ -30,31 +31,15 @@
         return json_encode($res);
     }
 
-    function upload($fichier){
-        $dossier = 'assets/img/';
-        $nameFichier = basename($fichier['name']);
-        if(move-uploaded_file($fichier['tmp_name'],$dossier.$nameFichier)){
-            echo "upload reussi";
-        }
-        else{
-            echo "echec";
-        }
+    function upload(){
+        $countfiles = count($_FILES['file']['name']);
+        
     }
-    // if(isset($_FILES['fichier'])){
-    //     var_dump($_FILES);
-    //     $dossier = 'img/';
-    //     $nom = basename($_FILES['fichier']['name']);
-    //     if(move_uploaded_file($_FILES['fichier']['tmp_name'],$dossier.$nom)){
-    //         echo "upload reussi";
-    //     }
-    //     else{
-    //         echo "echec";
-    //     }
-    // }
+   
 
     // // select * from habitation where idHabitation=$idHabitation;
 
     // insert into reservation values();
 
-    // select photo.nomPhoto FROM photo join habitaion on habitation.idPhoto=photo.idPhoto
+    // select photo.nomPhoto FROM photo join habitation on habitation.idPhoto=photo.idPhoto
 ?>
