@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,12 @@
     <link rel="stylesheet" href="./../css/admin.css">
     <link rel="stylesheet" href="./../css/app.css">
     <title>Document</title>
+    <?php
+    require_once("./../php/functionHabitation.php");
+    $habitations = getAllHab();
+    ?>
 </head>
+
 <body>
     <div class="header">
         <h1>Admin Panel</h1>
@@ -15,6 +21,23 @@
     </div>
     <div class="content">
         <div class="list-component">
+            <?php foreach ($habitations as $hab) { ?>
+                <div class="list-item">
+                    <div class="id"><?= $hab->idhabitations ?></div>
+                    <div class="type"><?= $hab->types ?></div>
+                    <div class="chambres"><?= $hab->nombredechambre ?></div>
+                    <div class="loyer"><?= $hab->loyer ?></div>
+                    <div class="photo"></div>
+                    <div class="quartier"><?= $hab->quartier ?></div>
+                    <div class="descri"><?= $hab->descri ?></div>
+                    <div class="update">
+                        <a href="modif.php?id=<?= $hab->idhabitations ?>"><button>Modifier</button></a>
+                    </div>
+                    <div class="delete">
+                        <button>Supprimer</button>
+                    </div>
+                </div>
+            <?php } ?>
             <div class="list-item">
                 <div class="id">1</div>
                 <div class="type">Studio</div>
@@ -33,4 +56,5 @@
         </div>
     </div>
 </body>
+
 </html>

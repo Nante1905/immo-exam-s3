@@ -4,6 +4,7 @@
     align-items: center;
     column-gap: 2rem;
     margin-inline: 10rem;
+    margin-block: 2rem;
     padding: 2rem;
     border: 1px solid black;
     border-radius: 10px;

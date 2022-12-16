@@ -3,16 +3,16 @@
     function getAllHab()
     {
         $connection = setPostgresConnection();
-        $req = $connection->query(/*requete*/);
+        $req = $connection->query("select * from habitations");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         
-        return json_encode($res);
+        return $res;
         // return $res;
     }
     function getIdHab(){
         $connection = setPostgresConnection();
-        $req = $connection->query("select max(id) from habitations");
+        $req = $connection->query("select max(idhabitations) from habitations");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         return $res;
@@ -20,11 +20,13 @@
     function addPhoto($photo){
         $connection = setPostgresConnection();
         $maxIdHab = getIdHab();
-        $connection->exec("insert into photo values $maxIdHab,$photo");
+        $res = $connection->exec("insert into photo values (DEFAULT,$maxIdHab,$photo)");
+        return $res;
     }
     function addHab($type,$nbreChambre,$loyer,$quartier,$descri){
         $connection = setPostgresConnection();
-        $connection->exec("insert into habitation VALUES DEFAULT,$type,$nbreChambre,$loyer,$quartier,$descri");
+        // $res = $connection->exec("insert into habitations VALUES DEFAULT,$type,$nbreChambre,$loyer,$quartier,$descri");
+        return 1;
     }
     function updateHab($idHab,$type,$nbreChambre,$loyer,$quartier,$descri){
         $connection = setPostgresConnection();
@@ -34,13 +36,13 @@
         $connection = setPostgresConnection();
         $connection->exec("delete from habitations where id=$idHab");
     }
-    function getMontantLoyerParJour($mois,$annee){
-        $connection = setPostgresConnection();
-        $req = $connection->query(/*requete*/);
-        $req->setFetchMode(PDO::FETCH_OBJ);
-        $res = $req->fetchAll();
-        return json_encode($res);
-    }
+    // function getMontantLoyerParJour($mois,$annee){
+    //     $connection = setPostgresConnection();
+    //     $req = $connection->query(/*requete*/);
+    //     $req->setFetchMode(PDO::FETCH_OBJ);
+    //     $res = $req->fetchAll();
+    //     return json_encode($res);
+    // }
 
 
 
