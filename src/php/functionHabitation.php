@@ -26,13 +26,13 @@
         $connection = setConnection();
         $connection->exec("insert into habitation VALUES DEFAULT,$type,$nbreChambre,$loyer,$quartier,$descri");
     }
-    function updateHab($idHab,$type,$nbreChambre,$loyer,$photo,$quartier,$descri){
+    function updateHab($idHab,$type,$nbreChambre,$loyer,$quartier,$descri){
         $connection = setConnection();
-        $connection->exec(/*requete*/);
+        $connection->exec("update habitations set Types=$type,nombreDeChambre=$nbrechambre,LoyerJr=$loyer,Quartier=$quartier,descri=$descri where id=$idHab");
     }
     function deleteHab($idHab){
         $connection = setConnection();
-        $connection->exec(/*requete*/);
+        $connection->exec("delete from habitations where id=$idHab");
     }
     function getMontantLoyerParJour($mois,$annee){
         $connection = setConnection();
