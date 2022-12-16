@@ -3,7 +3,7 @@ const generateHabCard = (data, root) => {
     habcard.setAttribute('class', 'hab-card')
 
     const link = document.createElement('a')
-    link.setAttribute('href', 'details.php?id=')
+    link.setAttribute('href', 'details.php?id='+data.idhabitations)
     habcard.appendChild(link)
 
     const divsary = document.createElement('div')
