@@ -2,7 +2,7 @@
     require_once("connection.php");
     function getAllHab()
     {
-        $connection = setConnection();
+        $connection = setPostgresConnection();
         $req = $connection->query(/*requete*/);
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
@@ -11,7 +11,7 @@
         // return $res;
     }
     function addHab($idHab,$type,$nbreChambre,$loyer,$quartier,$descri){
-        $connection = setConnection();
+        $connection = setPostgresConnection();
         $photo = upload();
         for($i=0;$i<count($photo);$i++){
             
@@ -19,16 +19,16 @@
         $connection->exec(/*requete*/);
         $connection->exec(/*requete*/);
     }
-    function updateHab($idHab,$type,$nbreChambre,$loyer,$photo,$quartier,$descri){
-        $connection = setConnection();
+    function updateHab($idHab,$type,$nbreChambre,$loyer,$quartier,$descri){
+        $connection = setPostgresConnection();
         $connection->exec(/*requete*/);
     }
     function deleteHab($idHab){
-        $connection = setConnection();
+        $connection = setPostgresConnection();
         $connection->exec(/*requete*/);
     }
     function getMontantLoyerParJour($mois,$annee){
-        $connection = setConnection();
+        $connection = setPostgresConnection();
         $req = $connection->query(/*requete*/);
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
@@ -39,7 +39,7 @@
         $countfiles = count($_FILES['file']['name']);
         $filename = [];
         for($i=0;$i<$countfiles;$i++){
-            $filename[i] = $_FILES['file']['name'][$i];
+            $filename[$i] = $_FILES['file']['name'][$i];
             move_uploaded_file($_FILES['file']['tmp_name'][$i],'upload/'.$filename);
         }
         return $filename;
