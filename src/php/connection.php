@@ -1,10 +1,8 @@
 <?php
-function setConnection() {
-    $host = 'localhost';
-    $PORT = 3306;
-    $dbname = 'immo';
-
-    $pdo = new PDO('mysql:host=' . $host . ';port=' . $PORT . ';dbname=' . $dbname, 'root', '');
-    
+function setPostgresConnection() {
+    $user='postgres';
+    $pass='2003';
+    $dsn='pgsql:host=localhost;port=5432;dbname=immo';
+    $pdo = new PDO($dsn, $user, $pass);
     return $pdo;
 }
