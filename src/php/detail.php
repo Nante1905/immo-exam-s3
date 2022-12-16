@@ -1,5 +1,8 @@
 <?php
-$id=$_POST['idHab'];
+// $id=$_POST['idHab'];
+require("functionHabitation.php");
+require("functions.php");
+;$id = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,31 +20,29 @@ $id=$_POST['idHab'];
 
 <div id="box1">
     <div id="contenant-Image">
-    <?php   $hab=getHabbyId($id);
-            for ($i=0; $i <count($hab->photo) ; $i++) { 
+    <?php   $hab=getAllHabById($id);
+            for ($i=0; $i <count($hab) ; $i++) { 
         ?>
-        <div><img src="<?$hab->photo[$i]?>" alt="" height="180" width="300"></div> 
-        <?php }?>
+        <div><img src="../../assets/img/<?=$hab[$i]->photo; ?>" alt="" height="180" width="300"></div> 
+        <?php echo '../../assets/img/<?$hab[$i]->photo'; }?>
     </div>
 </div>
 
 <div id="box2">
     <div id="prix-reserver">
-        <h3><?$hab->loyerjr?> par nuit</h3>
+    <?php   
+    ?>
+        <h3><?=$hab[0]->loyer; ?> par nuit</h3>
+        <?php //}?>
         <p>Réserver si vous êtes interressé</p>
-        <form action=".php" methode="POST">
-            <?php
-            if (array_key_exists 'reserver' ,$_POST) {
-                if (isReserved($i)!=true) {
-                    //fonction de reservation
-                }else{
-                    ?>
-                <p><script> alert("Habitation déja occuppé") </script></p>
-            <?php} 
-            }
-            ?>
-        <p><input type="submit" name="reserver" id="valid" value="Réserver"></p>
+        
+        <form action="reservation-back.php" method="get">
+            <p> Début de votre séjour :<input type="date" name="dateDebut" id="dateDebut"> </p>
+
+            <p> Fin de votre séjour: <br> <input type="date" name="dateFin" id="dateFin"></p>
         </form>
+
+        <a href="reservation-back.php?id=".$id>Reserver</a>
     </div>
 </div>
 
@@ -50,9 +51,10 @@ $id=$_POST['idHab'];
 <div id="descri">
     <div id="box3">
     <h3>Point a voir</h3>
-    <p>Se trouvant dans le Quartier de <?$hab->quartier?></p>
-    <p> De type <?$hab->types?></p>
-    <p><?$hab->descri?></p>
+    <p>Se trouvant dans le Quartier de <?=$hab[0]->quartier?></p>
+    <?php $getType = getTypeById($hab[0]->types); ?>
+    <p> De type <?=$getType; ?></p>
+    <p><?=$hab[0]->descri?></p>
     </div>
 </div>
 </div>

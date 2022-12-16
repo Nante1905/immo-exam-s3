@@ -1,7 +1,7 @@
 <?php
 function setPostgresConnection() {
     $user='postgres';
-    $pass='2003';
+    $pass='Grace1764';
     $dsn='pgsql:host=localhost;port=5432;dbname=testimmo';
     $pdo = new PDO($dsn, $user, $pass);
     return $pdo;
