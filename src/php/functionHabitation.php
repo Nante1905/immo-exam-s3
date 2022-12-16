@@ -3,21 +3,28 @@
     function getAllHab()
     {
         $connection = setConnection();
-        $req = $connection->query(/*requete*/);
+        $req = $connection->query("select * from habitations");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $res = $req->fetchAll();
         
         return json_encode($res);
         // return $res;
     }
-    function addHab($idHab,$type,$nbreChambre,$loyer,$quartier,$descri){
+    function getIdHab(){
         $connection = setConnection();
-        $photo = upload();
-        for($i=0;$i<count($photo);$i++){
-            
-        }
-        $connection->exec(/*requete*/);
-        $connection->exec(/*requete*/);
+        $connection->query("select max(id) from habitations");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        return $res;
+    }
+    function addPhoto($photo){
+        $connection = setConnection();
+        $maxIdHab = getIdHab();
+        $connection->exec("insert into photo values $maxIdHab,$photo");
+    }
+    function addHab($type,$nbreChambre,$loyer,$quartier,$descri){
+        $connection = setConnection();
+        $connection->exec("insert into habitation VALUES DEFAULT,$type,$nbreChambre,$loyer,$quartier,$descri");
     }
     function updateHab($idHab,$type,$nbreChambre,$loyer,$photo,$quartier,$descri){
         $connection = setConnection();
@@ -35,17 +42,7 @@
         return json_encode($res);
     }
 
-    function upload(){
-        $countfiles = count($_FILES['file']['name']);
-        $filename = [];
-        for($i=0;$i<$countfiles;$i++){
-            $filename[i] = $_FILES['file']['name'][$i];
-            move_uploaded_file($_FILES['file']['tmp_name'][$i],'upload/'.$filename);
-        }
-        return $filename;
-    } 
 
-    // // select * from habitation where idHabitation=$idHabitation;
 
     // insert into reservation values();
 

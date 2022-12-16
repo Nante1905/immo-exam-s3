@@ -49,12 +49,12 @@ insert into photo values(DEFAULT,6,'studio3i.jpg');
 insert into photo values(DEFAULT,6,'studio3i2.jpg');
 insert into photo values(DEFAULT,6,'studio3i3.jpg');
 
--- create table utilisateur(id SERIAL ,prenom VARCHAR(30),status VARCHAR(20), primary key (id));
+create table utilisateur(id SERIAL ,prenom VARCHAR(30),status VARCHAR(20), primary key (id));
 
--- insert into utilisateur values (DEFAULT,'Jean','admin');
--- insert into utilisateur values (DEFAULT, 'Andrew','client');
--- insert into utilisateur values (DEFAULT, 'Tom','client');
--- insert into utilisateur values (DEFAULT, 'Toby','client');
+insert into utilisateur values (DEFAULT,'Jean','admin');
+insert into utilisateur values (DEFAULT, 'Andrew','client');
+insert into utilisateur values (DEFAULT, 'Tom','client');
+insert into utilisateur values (DEFAULT, 'Toby','client');
 
 create table reservation (id SERIAL ,idClient int not null, idHab int not null,datereservation timestamp,primary key (id),foreign key (idClient) references utilisateur);
 insert into reservation values (DEFAULT,2,7,'2022-08-10 17:29:00');
@@ -99,3 +99,6 @@ insert into users values
 (default, 'carole@immo.com', 'Carole Griffin', 'carole', '+261340000004');
 
 select count(*) from users where email='' and mdp=''
+
+
+select * from habitation where idHabitation=1;
