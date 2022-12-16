@@ -1,8 +1,8 @@
 @font-face {
     font-family: raleway;
-    src: url(./../../assets/font/Raleway-Regular.ttf);
+    src: url("../../assets/font/Raleway-Regular.ttf");
 }
 
-body{
+body {
     font-family: raleway;
 }
