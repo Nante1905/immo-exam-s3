@@ -1,5 +1,7 @@
 CREATE DATABASE IMMOBILIER;
 
+<<<<<<< HEAD
+=======
 create table habitations (id Serial , Types int not null ,nombreDeChambre int not null , LoyerJr numeric(6,2),Quartier int not null ,descri VARCHAR(250));
 Alter table habitations add primary key (id), add foreign key (Types) references Types , add foreign key (Quartier) references Quartier ;
 insert into habitations values(DEFAULT,1,5,500.00,3,'Maison luxueuse ,paisible et tranquille ,très spacieux');
@@ -86,6 +88,7 @@ create table users (
     nom varchar(100),
     mdp varchar(250),
     tel varchar(30)
+>>>>>>> grace
 CREATE TABLE TYPES (
     IDTYPES SERIAL,
     NOMTYPE VARCHAR(30),
@@ -97,10 +100,13 @@ INSERT INTO TYPES VALUES(
     'Maison'
 );
 
+<<<<<<< HEAD
+=======
 select count(*) from users where email='' and mdp=''
 
 
 select * from habitation where idHabitation=1;
+>>>>>>> grace
 INSERT INTO TYPES VALUES(
     DEFAULT,
     'Studio'
@@ -189,9 +195,6 @@ INSERT INTO HABITATIONS VALUES(
 );
 
 INSERT INTO HABITATIONS VALUES(
-    DEFAULT,
-    2,
-    1,
     250.00,
     3,
     'Studio de musique ,enregistrement et repetition avec style'
