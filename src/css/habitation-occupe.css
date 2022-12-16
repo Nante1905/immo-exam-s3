@@ -1,0 +1,26 @@
+h1{
+    text-align: center;
+}
+.habitations{
+    width: 49rem;
+    padding-top: 3%;
+    height: 19rem;
+    text-align: center;
+    margin-left: 24%;
+}
+button a{
+    text-decoration: none;
+    color: #ffffff;
+}
+button {
+    transition: all 0.4s ease-in-out;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+    width: 7rem;
+    height: 2rem;
+    background-color: rgb(18, 76, 184);
+}
+button:hover {
+    transform: scale(1.1); 
+}

@@ -17,6 +17,13 @@
         $res = $req->fetchAll();
         return $res;
     }
+    function getIdType($nomType){
+        $connection = setConnection();
+        $connection->query("select idtypes from types where nomtype=$nomType");
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $res = $req->fetchAll();
+        return $res;
+    }
     function addPhoto($photo){
         $connection = setConnection();
         $maxIdHab = getIdHab();
@@ -24,7 +31,8 @@
     }
     function addHab($type,$nbreChambre,$loyer,$quartier,$descri){
         $connection = setConnection();
-        $connection->exec("insert into habitation VALUES DEFAULT,$type,$nbreChambre,$loyer,$quartier,$descri");
+        $idType = getIdType($type);
+        $connection->exec("insert into habitation VALUES DEFAULT,$idType,$nbreChambre,$loyer,$quartier,$descri");
     }
     function updateHab($idHab,$type,$nbreChambre,$loyer,$quartier,$descri){
         $connection = setConnection();

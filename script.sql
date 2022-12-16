@@ -97,12 +97,10 @@ INSERT INTO TYPES VALUES(
     'Maison'
 );
 
-<<<<<<< HEAD
 select count(*) from users where email='' and mdp=''
 
 
 select * from habitation where idHabitation=1;
-=======
 INSERT INTO TYPES VALUES(
     DEFAULT,
     'Studio'
@@ -587,4 +585,3 @@ FROM
 WHERE
     EMAIL=''
     AND MDP=''
->>>>>>> dev
