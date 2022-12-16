@@ -54,6 +54,7 @@
         $res = $req->fetchAll();
         return $res;
     }
+  
     // function getMontantLoyerParJour($mois,$annee){
     //     $connection = setPostgresConnection();
     //     $req = $connection->query(/*requete*/);

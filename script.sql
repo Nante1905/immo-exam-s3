@@ -1,7 +1,5 @@
 CREATE DATABASE IMMOBILIER;
 
-<<<<<<< HEAD
-=======
 create table habitations (id Serial , Types int not null ,nombreDeChambre int not null , LoyerJr numeric(6,2),Quartier int not null ,descri VARCHAR(250));
 Alter table habitations add primary key (id), add foreign key (Types) references Types , add foreign key (Quartier) references Quartier ;
 insert into habitations values(DEFAULT,1,5,500.00,3,'Maison luxueuse ,paisible et tranquille ,très spacieux');
@@ -79,7 +77,7 @@ update habitations set nomtable where id=1 ;
 delete from habitations where id=1 ;
 
 -- disponibilité
-create or replace view dispo as select * from habitations where id not in (select idHab from reservation where extract(day from datereservation)=16 and extract(month from datereservation)=12 and extract(year from datereservation=)2022);
+create or replace view dispo as select * from habitations where id not in (select idHab from reservation where extract(day from datereservation)=16 and extract(month from datereservation)=12 and extract(year from datereservation)=2022);
 
 select * from habitations where types=1;
 create table users (
@@ -88,7 +86,6 @@ create table users (
     nom varchar(100),
     mdp varchar(250),
     tel varchar(30)
->>>>>>> grace
 CREATE TABLE TYPES (
     IDTYPES SERIAL,
     NOMTYPE VARCHAR(30),
