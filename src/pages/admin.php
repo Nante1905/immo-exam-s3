@@ -34,25 +34,10 @@
                         <a href="modif.php?id=<?= $hab->idhabitations ?>"><button>Modifier</button></a>
                     </div>
                     <div class="delete">
-                        <button>Supprimer</button>
+                        <a href="../php/deleteHab.php?id=<?= $hab->idhabitations ?>"><button>Supprimer</button></a>
                     </div>
                 </div>
             <?php } ?>
-            <div class="list-item">
-                <div class="id">1</div>
-                <div class="type">Studio</div>
-                <div class="chambres">4</div>
-                <div class="loyer">2000</div>
-                <div class="photo"></div>
-                <div class="quartier">Andoharanofotsy</div>
-                <div class="descri">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nobis minus tempore praesentium impedit commodi, aperiam qui delectus saepe. Quas!</div>
-                <div class="update">
-                    <a href="modif.php?id="><button>Modifier</button></a>
-                </div>
-                <div class="delete">
-                    <button>Supprimer</button>
-                </div>
-            </div>
         </div>
     </div>
 </body>

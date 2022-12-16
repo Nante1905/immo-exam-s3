@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="./../css/add.css">
     <link rel="stylesheet" href="./../css/app.css">
     <title>Document</title>
+    <?php
+      include("../php/functions.php");
+      $hab = getHabitationById($_GET["id"])[0];
+    ?>
   </head>
   <body>
     <div class="header">
@@ -14,28 +18,29 @@
     </div>
     <div class="content">
       <div class="add-component">
-        <form action="#" method="get" id="add-form">
+        <form action="../php/updateHab.php" method="get" id="add-form">
           <div class="add-form">
             <div class="input-group">
               <label for="type">Type : </label>
-              <input type="text" name="type" />
+              <input type="text" name="type" value="<?= getTypeById($hab->types) ?>"/>
             </div>
             <div class="input-group">
               <label for="chambres">Nombre de chambres : </label>
-              <input type="text" name="chambres" />
+              <input type="text" name="chambres" value="<?= $hab->nombredechambre ?>"/>
             </div>
             <div class="input-group">
               <label for="loyer">Loyer (/Jour) : </label>
-              <input type="text" name="loyer" />
+              <input type="text" name="loyer" value="<?= $hab->loyer ?>"/>
             </div>
             <div class="input-group">
               <label for="quartier">Quartier : </label>
-              <input type="text" name="quartier" />
+              <input type="text" name="quartier" value="<?= $hab->quartier ?>"/>
             </div>
             <div class="input-group">
               <label for="descri">Description : </label>
-              <input type="text" name="descri"/>
+              <input type="text" name="descri" value="<?= $hab->descri ?>"/>
             </div>
+            <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
             <div class="btn-sub">
               <button>Ajouter</button>
             </div>
