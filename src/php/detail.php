@@ -1,5 +1,5 @@
 <?php
-$id=$_GET['idHab'];
+$id=$_POST['idHab'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@ $id=$_GET['idHab'];
     <?php   $hab=getHabbyId($id);
             for ($i=0; $i <count($hab->photo) ; $i++) { 
         ?>
-        <div><img src="<?$hab->photo?>" alt="" height="180" width="300"></div> 
+        <div><img src="<?$hab->photo[$i]?>" alt="" height="180" width="300"></div> 
         <?php }?>
     </div>
 </div>
@@ -29,7 +29,19 @@ $id=$_GET['idHab'];
     <div id="prix-reserver">
         <h3><?$hab->loyerjr?> par nuit</h3>
         <p>Réserver si vous êtes interressé</p>
-        <p><input type="button" id="valid" value="Réserver"></p>
+        <form action=".php" methode="POST">
+            <?php
+            if (array_key_exists 'reserver' ,$_POST) {
+                if (isReserved($i)!=true) {
+                    //fonction de reservation
+                }else{
+                    ?>
+                <p><script> alert("Habitation déja occuppé") </script></p>
+            <?php} 
+            }
+            ?>
+        <p><input type="submit" name="reserver" id="valid" value="Réserver"></p>
+        </form>
     </div>
 </div>
 
