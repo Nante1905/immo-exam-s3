@@ -21,3 +21,15 @@ function setReservation($id, $datedebut, $datefin) {
         $query = "insert into reservation values()";
     }
 }
+function login($email, $mdp) {
+    $pdo = setPostgresConnection();
+    $query = "select count(*) isany from users where email='$email' and mdp='$mdp'";
+    $res = $pdo->query($query);
+    $res->setFetchMode(PDO::FETCH_OBJ);
+    $data = $res->fetchAll();
+
+    if($data[0]->isany === 1) {
+        return true;
+    }
+    return false;
+}
