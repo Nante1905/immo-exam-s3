@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- mbola tsy mety -->
 <?php
 
 $PARAM_hote='localhost'; 
